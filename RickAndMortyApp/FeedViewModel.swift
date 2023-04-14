@@ -7,29 +7,26 @@
 
 import Foundation
 
-//protocol ChooseLocation {
-//    func fetchLocationWithQuery(with id: String)
-//}
+
+
 
 
 protocol FeedViewModelInterface {
     var view: FeedViewController? { get set }
-    
+    var headercell: CellHeader? {get set}
     func viewDidLoad()
 }
 
 final class FeedViewModel {
     
     weak var view: FeedViewController?
-   //  var cellHeaderInterface: CellHeaderInterface?
-    
-    let headerView = CellHeader()
+    weak var headercell: CellHeader?
+   
     var locationResponseForCollectionView = [LocationResult]()
     var tableviewDataArrya:  [String]?
     init() {
         fetchLocationData()
-    //    headerView.queryDelegate = self
-       
+        fetchLocationWithQuery(with: "1")
     }
     
     deinit {
@@ -48,10 +45,9 @@ final class FeedViewModel {
                         guard let data = response.results else {
                             return
                         }
-                        
-                        self.locationResponseForCollectionView = data
-                    //    self.reloadCollection?.updateCollection()
-                        print(response)
+          
+                        self.headercell?.updateTopCollectionView(with: data)
+                        print(data)
                     })
                 }
                 
@@ -72,12 +68,35 @@ extension FeedViewModel: FeedViewModelInterface {
  
     
     func viewDidLoad() {
-      //  view?.setupConts()
         view?.prepare()
         
     }
     
     
+}
+
+
+extension FeedViewModel {
+    func fetchLocationWithQuery(with id: String) {
+            NetworkManager.shared.request(type: LocationResult.self, url: "https://rickandmortyapi.com/api/location/\(id)", method: .get) { response in
+    
+                switch response {
+                case .success(let success):
+                    if success.id != nil {
+                        guard let data = success.residents else {
+                            return
+                        }
+                        self.view?.updateTableView(chracters: data)
+    
+                       // print(data)
+                    }
+                case .failure(let failure):
+                    print(failure)
+                }
+    
+    
+            }
+        }
 }
 
 //MARK: - query

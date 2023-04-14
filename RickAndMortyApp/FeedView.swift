@@ -10,7 +10,7 @@ import UIKit
 protocol FeedViewControllerInterface {
     
     func prepare()
-    func updateMainCollectionView(chracters: [String])
+    func updateTableView(chracters: [String])
 }
 
 
@@ -113,6 +113,14 @@ extension FeedViewController: UITableViewDataSource {
 //MARK: - Setup
 
 extension FeedViewController: FeedViewControllerInterface {
+    func updateTableView(chracters: [String]) {
+        viewModel.tableviewDataArrya = chracters
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
     
     
     
@@ -130,7 +138,6 @@ extension FeedViewController: FeedViewControllerInterface {
         self.tableView.tableHeaderView = tableViewHeader
         
         setupConts()
-        viewModel.fetchLocationData()
     }
     
     

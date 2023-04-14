@@ -7,8 +7,8 @@
 
 import UIKit
 
-protocol UpdateTopCollection {
-    func updateCollection() 
+protocol CellHeaderInterface {
+    func updateTopCollectionView(with: [LocationResult])
 }
 
 
@@ -18,7 +18,7 @@ final class CellHeader: UIView {
     
     lazy var viewModel = FeedViewModel()
     
-   //  var queryDelegate: ChooseLocation?
+   
     
     let segmentControlCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -38,6 +38,7 @@ final class CellHeader: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        viewModel.headercell = self
         setupUI()
         backgroundColor = .white
         
@@ -50,7 +51,7 @@ final class CellHeader: UIView {
     
     
     
-    private func setupUI() {
+     func setupUI() {
         
        
         segmentControlCollectionView.delegate = self
@@ -65,40 +66,34 @@ final class CellHeader: UIView {
   
 }
 
-//extension CellHeader: CellHeaderInterface {
-//    func updateSegmentController(response: [LocationResult]) {
-//        self.viewModel.locationResponseForCollectionView = response
-//        DispatchQueue.main.async {
-//
-//            self.segmentControlCollectionView.reloadData()
-//
-//        }
-//    }
-//}
-
-
-//extension CellHeader: CellHeaderInterface {
-//    func updateSegmentController(response: [LocationResult]) {
-//        print("bastıııı")
-//    }
-//
-//
-//}
-
-
+extension CellHeader: CellHeaderInterface {
+    func updateTopCollectionView(with array: [LocationResult]) {
+        viewModel.locationResponseForCollectionView = array
+        
+        DispatchQueue.main.async {
+            self.segmentControlCollectionView.reloadData()
+        }
+    }
+    
     
     
 }
 
+
+    
+    
+//}
+
 extension CellHeader: UICollectionViewDelegate {
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let arr = viewModel.locationResponseForCollectionView
-//        guard let query = arr[indexPath.item].id?.description else {
-//            return
-//        }
-//        queryDelegate?.fetchLocationWithQuery(with: query)
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let arr = viewModel.locationResponseForCollectionView
+        guard let query = arr[indexPath.item].name?.description else {
+            return
+        }
+        print(query)
+   //     queryDelegate?.fetchLocationWithQuery(with: query)
+    }
     
     
 }
@@ -106,7 +101,8 @@ extension CellHeader: UICollectionViewDelegate {
 extension CellHeader: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     
-        viewModel.locationResponseForCollectionView.count 
+        viewModel.locationResponseForCollectionView.count
+        
       
     }
     
@@ -120,6 +116,7 @@ extension CellHeader: UICollectionViewDataSource {
 
         cell.configure(viewModel.locationResponseForCollectionView[indexPath.item].name ?? "nil")
 
+       // cell.backgroundColor = .yellow
         cell.layer.cornerRadius = 50
         return cell
     }
