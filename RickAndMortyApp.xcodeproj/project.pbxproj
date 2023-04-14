@@ -56,15 +56,63 @@
 		A9417F0B29E9B1B600F2514E /* RickAndMortyApp */ = {
 			isa = PBXGroup;
 			children = (
+				A9417F2029E9B23C00F2514E /* Core */,
+				A9417F2129E9B24100F2514E /* Network */,
+				A9417F2229E9B24E00F2514E /* Feature */,
+			);
+			path = RickAndMortyApp;
+			sourceTree = "<group>";
+		};
+		A9417F2029E9B23C00F2514E /* Core */ = {
+			isa = PBXGroup;
+			children = (
 				A9417F0C29E9B1B600F2514E /* AppDelegate.swift */,
 				A9417F0E29E9B1B600F2514E /* SceneDelegate.swift */,
-				A9417F1029E9B1B600F2514E /* ViewController.swift */,
 				A9417F1229E9B1B600F2514E /* Main.storyboard */,
 				A9417F1529E9B1B800F2514E /* Assets.xcassets */,
 				A9417F1729E9B1B800F2514E /* LaunchScreen.storyboard */,
 				A9417F1A29E9B1B800F2514E /* Info.plist */,
 			);
-			path = RickAndMortyApp;
+			name = Core;
+			sourceTree = "<group>";
+		};
+		A9417F2129E9B24100F2514E /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		A9417F2229E9B24E00F2514E /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				A9417F2529E9B26500F2514E /* Model */,
+				A9417F2429E9B25E00F2514E /* ViewModel */,
+				A9417F2329E9B25500F2514E /* View */,
+			);
+			name = Feature;
+			sourceTree = "<group>";
+		};
+		A9417F2329E9B25500F2514E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A9417F1029E9B1B600F2514E /* ViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		A9417F2429E9B25E00F2514E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		A9417F2529E9B26500F2514E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
