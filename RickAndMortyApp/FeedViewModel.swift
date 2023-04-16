@@ -7,14 +7,12 @@
 
 import Foundation
 
-
-
-
-
 protocol FeedViewModelInterface {
     var view: FeedViewController? { get set }
     var headercell: CellHeader? {get set}
     func parseCharacter(with id: String , completion: @escaping(ResultCharacter) -> Void )
+    func fetchLocationWithQuery(with id: String)
+    var currentIndex: Int {get set}
     func viewDidLoad()
 }
 
@@ -22,9 +20,10 @@ final class FeedViewModel {
     
     weak var view: FeedViewController?
     weak var headercell: CellHeader?
-   
+    
     var locationResponseForCollectionView = [LocationResult]()
     var tableviewDataArrya = [String]()
+      var currentIndex = 1
     init() {
         fetchLocationData()
         fetchLocationWithQuery(with: "1")
@@ -42,16 +41,43 @@ final class FeedViewModel {
                 
                 if success.info?.count != nil {
                     response.map({ response in
-                       
+                        
                         guard let data = response.results else {
                             return
                         }
-          
+                        
                         self.headercell?.updateTopCollectionView(with: data)
                     })
                 }
-                
-                
+            case .failure(let failure):
+                print(failure)
+            }
+        }
+    }
+}
+
+extension FeedViewModel: FeedViewModelInterface {
+
+    
+    
+    
+    func viewDidLoad() {
+        view?.prepare()
+        
+    }
+    
+    func fetchLocationWithQuery(with id: String) {
+        NetworkManager.shared.request(type: LocationResult.self, url: "https://rickandmortyapi.com/api/location/\(id)", method: .get) { response in
+            
+            switch response {
+            case .success(let success):
+                if success.id != nil {
+                    guard let data = success.residents else {
+                        return
+                    }
+                    self.view?.updateTableView(chracters: data)
+                    //   print(data)
+                }
             case .failure(let failure):
                 print(failure)
             }
@@ -61,56 +87,18 @@ final class FeedViewModel {
     
     func parseCharacter(with link: String , completion: @escaping(ResultCharacter) -> Void )  {
         NetworkManager.shared.request(type: ResultCharacter.self, url: link, method: .get) { response in
-         
+            
             switch response {
             case .success(let success):
                 completion(success)
             case .failure(let failure):
                 print(failure)
             }
-        //    print(response)
         }
     }
-
-   
-
-   
-}
-
-
-extension FeedViewModel: FeedViewModelInterface {
- 
-    
-    func viewDidLoad() {
-        view?.prepare()
-        
-    }
     
     
 }
 
-
-extension FeedViewModel {
-    func fetchLocationWithQuery(with id: String) {
-            NetworkManager.shared.request(type: LocationResult.self, url: "https://rickandmortyapi.com/api/location/\(id)", method: .get) { response in
-    
-                switch response {
-                case .success(let success):
-                    if success.id != nil {
-                        guard let data = success.residents else {
-                            return
-                        }
-                        self.view?.updateTableView(chracters: data)
-    
-                     //   print(data)
-                    }
-                case .failure(let failure):
-                    print(failure)
-                }
-    
-    
-            }
-        }
-}
 
 

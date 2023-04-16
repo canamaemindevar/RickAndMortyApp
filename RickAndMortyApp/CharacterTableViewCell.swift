@@ -45,8 +45,6 @@ final class CharacterTableViewCell: UITableViewCell {
         sView.layer.cornerRadius = 5
         sView.axis = .horizontal
         sView.distribution = .fillEqually
-        
-        
         return sView
     }()
     
@@ -70,15 +68,11 @@ final class CharacterTableViewCell: UITableViewCell {
         stackview.addArrangedSubview(femaleimageView)
         stackview.addArrangedSubview(genderlessimageView)
         stackview.addArrangedSubview(maleimageView)
-      
-     
-       // stackview.frame = bounds
         
         NSLayoutConstraint.activate([
 
             stackview.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
         stackview.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-          //  stackview.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height / 8),
             stackview.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 10),
             stackview.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width )
         ])

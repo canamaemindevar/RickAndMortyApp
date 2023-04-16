@@ -7,17 +7,225 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "53413C33-CB98-40D3-BB7A-09F72B684168"
-            shouldBeEnabled = "No"
+            uuid = "2891F28C-03B5-4A7C-9B0B-2F6D4DC8A219"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RickAndMortyApp/FeedViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "parseCharacter(with:completion:)"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "fetchLocationWithQuery(with:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2891F28C-03B5-4A7C-9B0B-2F6D4DC8A219 - 22640c19a1ab0880"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RickAndMortyApp.FeedViewModel.fetchLocationWithQuery(with: Swift.String) -&gt; ()"
+                  moduleName = "RickAndMortyApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/RickAndMortyApp/RickAndMortyApp/FeedViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "80">
+               </Location>
+               <Location
+                  uuid = "2891F28C-03B5-4A7C-9B0B-2F6D4DC8A219 - a2933d4cfe8c5466"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;RickAndMortyApp.LocationResult, RickAndMortyApp.ErrosTypes&gt;) -&gt; () in RickAndMortyApp.FeedViewModel.fetchLocationWithQuery(with: Swift.String) -&gt; ()"
+                  moduleName = "RickAndMortyApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/RickAndMortyApp/RickAndMortyApp/FeedViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "392">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DE158FA5-B1DD-432D-B516-F967A1BB79D9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RickAndMortyApp/FeedView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
+            landmarkName = "swipeUp()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AF0A2489-3745-409D-ACCA-73ED3288162E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RickAndMortyApp/FeedView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "swipeDown()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AF0A2489-3745-409D-ACCA-73ED3288162E - c66253c19b5a918a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RickAndMortyApp.FeedViewController.swipeDown() -&gt; ()"
+                  moduleName = "RickAndMortyApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/RickAndMortyApp/RickAndMortyApp/FeedView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "171"
+                  endingLineNumber = "171"
+                  offsetFromSymbolStart = "216">
+               </Location>
+               <Location
+                  uuid = "AF0A2489-3745-409D-ACCA-73ED3288162E - c66253c19b5a918a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RickAndMortyApp.FeedViewController.swipeDown() -&gt; ()"
+                  moduleName = "RickAndMortyApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/RickAndMortyApp/RickAndMortyApp/FeedView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "171"
+                  endingLineNumber = "171"
+                  offsetFromSymbolStart = "212">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A72387AC-03A7-4CEE-A2EA-1272A0FDA0F1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RickAndMortyApp/FeedViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "fetchLocationWithQuery(with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8F928E1C-5F16-4091-83E8-5EF21DC0D927"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RickAndMortyApp/FeedView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "updateTableView(chracters:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DB85776C-9DBB-4AB8-9011-32452E58BB8E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RickAndMortyApp/FeedView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "updateTableView(chracters:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "58BE9B8B-81AB-4385-ADEC-D442E27C21B5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RickAndMortyApp/FeedView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "updateTableView(chracters:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C7328B80-8D61-4594-972C-81B834D4DBB8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RickAndMortyApp/FeedView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "updateTableView(chracters:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C7328B80-8D61-4594-972C-81B834D4DBB8 - 84fb1f184f11b080"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RickAndMortyApp.FeedViewController.updateTableView(chracters: Swift.Array&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "RickAndMortyApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/RickAndMortyApp/RickAndMortyApp/FeedView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "118"
+                  endingLineNumber = "118"
+                  offsetFromSymbolStart = "256">
+               </Location>
+               <Location
+                  uuid = "C7328B80-8D61-4594-972C-81B834D4DBB8 - 965840b38f94b5cc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in RickAndMortyApp.FeedViewController.updateTableView(chracters: Swift.Array&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "RickAndMortyApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emincanantalyali/Desktop/SwiftDenemeler/RickAndMortyApp/RickAndMortyApp/FeedView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "119"
+                  endingLineNumber = "119"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
