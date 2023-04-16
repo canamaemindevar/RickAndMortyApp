@@ -14,6 +14,7 @@ import Foundation
 protocol FeedViewModelInterface {
     var view: FeedViewController? { get set }
     var headercell: CellHeader? {get set}
+    func parseCharacter(with id: String , completion: @escaping(ResultCharacter) -> Void )
     func viewDidLoad()
 }
 
@@ -23,7 +24,7 @@ final class FeedViewModel {
     weak var headercell: CellHeader?
    
     var locationResponseForCollectionView = [LocationResult]()
-    var tableviewDataArrya:  [String]?
+    var tableviewDataArrya = [String]()
     init() {
         fetchLocationData()
         fetchLocationWithQuery(with: "1")
@@ -47,7 +48,6 @@ final class FeedViewModel {
                         }
           
                         self.headercell?.updateTopCollectionView(with: data)
-                        print(data)
                     })
                 }
                 
@@ -55,6 +55,20 @@ final class FeedViewModel {
             case .failure(let failure):
                 print(failure)
             }
+        }
+    }
+    
+    
+    func parseCharacter(with link: String , completion: @escaping(ResultCharacter) -> Void )  {
+        NetworkManager.shared.request(type: ResultCharacter.self, url: link, method: .get) { response in
+         
+            switch response {
+            case .success(let success):
+                completion(success)
+            case .failure(let failure):
+                print(failure)
+            }
+        //    print(response)
         }
     }
 
@@ -88,7 +102,7 @@ extension FeedViewModel {
                         }
                         self.view?.updateTableView(chracters: data)
     
-                       // print(data)
+                     //   print(data)
                     }
                 case .failure(let failure):
                     print(failure)
@@ -99,27 +113,4 @@ extension FeedViewModel {
         }
 }
 
-//MARK: - query
 
-//extension FeedViewModel: ChooseLocation {
-//    func fetchLocationWithQuery(with id: String) {
-//        NetworkManager.shared.request(type: LocationResult.self, url: "https://rickandmortyapi.com/api/location/\(id)", method: .get) { response in
-//
-//            switch response {
-//            case .success(let success):
-//                if success.id != nil {
-//                    guard let data = success.residents else {
-//                        return
-//                    }
-//                  //  self.view?.updateMainCollectionView(chracters: data)
-//
-//                    print(data)
-//                }
-//            case .failure(let failure):
-//                print(failure)
-//            }
-//
-//
-//        }
-//    }
-//}

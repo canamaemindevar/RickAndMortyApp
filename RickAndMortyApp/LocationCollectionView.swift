@@ -18,14 +18,14 @@ final class LocationCollectionViewCell: UICollectionViewCell {
         label.numberOfLines = 0
         label.font(.preferredFont(forTextStyle: .body).withSize(22))
         label.align(.center)
-        label.backgroundColor = .systemBackground
+        label.backgroundColor = .clear
         label.textColor(.label)
         return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .blue
+        backgroundColor = .magenta
         setConts()
     }
     
@@ -44,7 +44,7 @@ final class LocationCollectionViewCell: UICollectionViewCell {
         ])
      //   self.label.frame = bounds
         
-        self.layer.cornerRadius = 50
+        self.layer.cornerRadius = 20
         
     }
 
@@ -52,7 +52,7 @@ final class LocationCollectionViewCell: UICollectionViewCell {
     
     public func configure(_ text: String) {
         label.text(text)
-        label.layer.cornerRadius = 50
+        label.layer.cornerRadius = 20
     }
     
     

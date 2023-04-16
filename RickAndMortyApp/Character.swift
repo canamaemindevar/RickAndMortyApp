@@ -39,6 +39,7 @@ enum Gender: String, Codable {
     case female = "Female"
     case male = "Male"
     case unknown = "unknown"
+    case genderless = "Genderless"
 }
 
 // MARK: - Location
@@ -50,6 +51,14 @@ struct Location: Codable {
 enum Species: String, Codable {
     case alien = "Alien"
     case human = "Human"
+    case cronenberg = "Cronenberg"
+    case robot = "Robot"
+    case humanoid = "Humanoid"
+    case animal = "Animal"
+    case disease = "Disease"
+    case poopybutthole = "Poopybutthole"
+    case unknown = "unknown"
+    case mythologicalCreature = "Mythological Creature"
 }
 
 enum Status: String, Codable {

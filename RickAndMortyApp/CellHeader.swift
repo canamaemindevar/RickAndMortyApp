@@ -28,7 +28,7 @@ final class CellHeader: UIView {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.translatesAutoresizingMaskIntoConstraints = false
         collection.layer.cornerRadius = 5
-        collection.backgroundColor = .black
+        collection.backgroundColor = .cyan
         collection.register(LocationCollectionViewCell.self, forCellWithReuseIdentifier: LocationCollectionViewCell.identifier)
         
         return collection
@@ -92,7 +92,7 @@ extension CellHeader: UICollectionViewDelegate {
             return
         }
         print(query)
-   //     queryDelegate?.fetchLocationWithQuery(with: query)
+        
     }
     
     
@@ -116,8 +116,7 @@ extension CellHeader: UICollectionViewDataSource {
 
         cell.configure(viewModel.locationResponseForCollectionView[indexPath.item].name ?? "nil")
 
-       // cell.backgroundColor = .yellow
-        cell.layer.cornerRadius = 50
+        
         return cell
     }
 }

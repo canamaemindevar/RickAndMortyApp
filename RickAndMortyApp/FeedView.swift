@@ -20,6 +20,8 @@ final class FeedViewController: UIViewController  {
     
     
     
+    
+    
     //MARK: - Components
     private lazy var viewModel = FeedViewModel()
     
@@ -29,7 +31,7 @@ final class FeedViewController: UIViewController  {
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero,style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .systemBackground
+        tableView.backgroundColor = .systemMint
         tableView.separatorColor = .systemGray
         tableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: CharacterTableViewCell.identifier)
         tableView.layer.cornerRadius = 0
@@ -68,6 +70,12 @@ final class FeedViewController: UIViewController  {
         }
     }
     
+    
+    
+    @objc func swipe() {
+        print("kaydır")
+    }
+    
 }
 
 //MARK: - Tableview funcs
@@ -85,7 +93,7 @@ extension FeedViewController: UITableViewDelegate {
 extension FeedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return viewModel.tableviewDataArrya?.count ?? 2
+        return viewModel.tableviewDataArrya.count 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -94,19 +102,37 @@ extension FeedViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.textLabel?.text = viewModel.tableviewDataArrya?[indexPath.row]
+        
+        
+        
+            cell.textLabel?.text = self.viewModel.tableviewDataArrya[indexPath.row]
+            let url = self.viewModel.tableviewDataArrya[indexPath.row]
+            self.viewModel.parseCharacter(with: url) {response in
+                cell.config(data: response)
+            }
+       
+
         return cell
     }
     
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return view.frame.height / 7
+        return UIScreen.main.bounds.height / 6
+    }
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
     
     
+    
+    
 }
+
+
 
 
 
@@ -130,9 +156,13 @@ extension FeedViewController: FeedViewControllerInterface {
         tableView.delegate = self
         tableView.dataSource = self
         
+        
         view.backgroundColor = .yellow
         view.addSubview(tableView)
         
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipe))
+        swipe.direction = .right
+        view.addGestureRecognizer(swipe)
         
         let tableViewHeader = CellHeader(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100))
         self.tableView.tableHeaderView = tableViewHeader

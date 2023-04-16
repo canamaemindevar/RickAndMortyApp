@@ -10,7 +10,6 @@ import Foundation
 enum Endpoints: String {
     
     case character = "/character"
-  //  case sendData = "/postapi.php"
     
 }
 

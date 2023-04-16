@@ -26,6 +26,7 @@
 		A9417F3D29E9B5D700F2514E /* NetworkHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9417F3C29E9B5D700F2514E /* NetworkHelpers.swift */; };
 		A9417F3F29E9B5F400F2514E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9417F3E29E9B5F400F2514E /* NetworkManager.swift */; };
 		A9417F4129E9B72800F2514E /* SomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9417F4029E9B72800F2514E /* SomeViewController.swift */; };
+		A9417F6829EC0D3A00F2514E /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = A9417F6729EC0D3A00F2514E /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9417F6829EC0D3A00F2514E /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +188,9 @@
 			dependencies = (
 			);
 			name = RickAndMortyApp;
+			packageProductDependencies = (
+				A9417F6729EC0D3A00F2514E /* SDWebImage */,
+			);
 			productName = RickAndMortyApp;
 			productReference = A9417F0929E9B1B600F2514E /* RickAndMortyApp.app */;
 			productType = "com.apple.product-type.application";
@@ -214,6 +219,9 @@
 				Base,
 			);
 			mainGroup = A9417F0029E9B1B600F2514E;
+			packageReferences = (
+				A9417F6629EC0D3A00F2514E /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = A9417F0A29E9B1B600F2514E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -411,7 +419,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -440,7 +448,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -476,6 +484,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A9417F6629EC0D3A00F2514E /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A9417F6729EC0D3A00F2514E /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A9417F6629EC0D3A00F2514E /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A9417F0129E9B1B600F2514E /* Project object */;
 }

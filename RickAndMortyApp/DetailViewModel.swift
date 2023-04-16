@@ -9,9 +9,9 @@ import Foundation
 
 final class DetailViewModel{
     
-    var data: String
+    var data: ResultCharacter
 
-    init(data: String) {
+    init(data: ResultCharacter) {
         self.data = data
         
     }
