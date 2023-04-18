@@ -7,20 +7,29 @@
 
 import UIKit
 
+
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    let feedView = FeedViewController()
+    let welcomeHelloView = WelcomeHelloViewController()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        
+        
+        
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = FeedViewController()
-      //  window?.rootViewController = SomeViewController()
+        window?.rootViewController = feedView
+        welcomeHelloView.delegate = self
+       // window?.rootViewController = DetailViewController()
+       setRootViewController(welcomeHelloView)
         
         window?.makeKeyAndVisible()
     }
@@ -56,3 +65,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
+
+extension SceneDelegate: WelcomeHelloViewControllerInterface {
+    func rootToFeedView() {
+        LocalState.hasOnboarded = true
+        setRootViewController(feedView)
+    }
+    
+    
+}
+
+
+extension SceneDelegate {
+    func setRootViewController(_ vc: UIViewController, animated: Bool = true) {
+        guard animated, let window = self.window else {
+            self.window?.rootViewController = vc
+            self.window?.makeKeyAndVisible()
+            return
+        }
+        window.rootViewController = vc
+        window.makeKeyAndVisible()
+        UIView.transition(with: window,
+                          duration: 0.7,
+                          options: .transitionCrossDissolve,
+                          animations: nil)
+    }
+}

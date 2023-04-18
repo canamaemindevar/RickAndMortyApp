@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol CellHeaderInterface {
+protocol CellHeaderInterface: AnyObject {
     func updateTopCollectionView(with: [LocationResult])
 }
 
@@ -88,10 +88,11 @@ extension CellHeader: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let arr = viewModel.locationResponseForCollectionView
-        guard let query = arr[indexPath.item].name?.description else {
+        guard let query = arr[indexPath.item].id else {
             return
         }
-        print(query)
+       // print(query)
+        viewModel.fetchLocationWithQuery(with: String(query))
         
     }
     
@@ -119,6 +120,8 @@ extension CellHeader: UICollectionViewDataSource {
         
         return cell
     }
+    
+
 }
 
 

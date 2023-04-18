@@ -22,7 +22,8 @@ final class FeedViewModel {
     weak var headercell: CellHeader?
     
     var locationResponseForCollectionView = [LocationResult]()
-    var tableviewDataArrya = [String]()
+    var tableViewCharacterUrlArray = [String]()
+    var tableViewCharacterArray = [ResultCharacter]()
       var currentIndex = 1
     init() {
         fetchLocationData()
@@ -35,7 +36,7 @@ final class FeedViewModel {
     
     
     func fetchLocationData() {
-        NetworkManager.shared.request(type: LocationResponse.self, url: "https://rickandmortyapi.com/api/location", method: .get) { response in
+        NetworkManager.shared.request(type: LocationResponse.self, url: "https://rickandmortyapi.com/api/location", method: .get) { [weak self] response in
             switch response {
             case .success(let success):
                 
@@ -46,7 +47,7 @@ final class FeedViewModel {
                             return
                         }
                         
-                        self.headercell?.updateTopCollectionView(with: data)
+                        self?.headercell?.updateTopCollectionView(with: data)
                     })
                 }
             case .failure(let failure):
@@ -79,6 +80,7 @@ extension FeedViewModel: FeedViewModelInterface {
                     //   print(data)
                 }
             case .failure(let failure):
+                
                 print(failure)
             }
         }

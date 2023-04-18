@@ -14,10 +14,18 @@ final class CharacterTableViewCell: UITableViewCell {
 
    static let identifier = "characterCell"
     
+    private let myView: UIView = {
+        let iv = UIView()
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        
+        iv.tintColor = .label
+        return iv
+    }()
+    
     private let maleimageView: UIImageView = {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.contentMode = .scaleAspectFill
+        iv.contentMode = .scaleAspectFit
         iv.tintColor = .label
         iv.layer.cornerRadius = 5
         return iv
@@ -25,7 +33,7 @@ final class CharacterTableViewCell: UITableViewCell {
     private let femaleimageView: UIImageView = {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.contentMode = .scaleAspectFill
+        iv.contentMode = .scaleAspectFit
         iv.tintColor = .label
         iv.layer.cornerRadius = 5
         return iv
@@ -33,7 +41,7 @@ final class CharacterTableViewCell: UITableViewCell {
     private let genderlessimageView: UIImageView = {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.contentMode = .scaleAspectFill
+        iv.contentMode = .scaleAspectFit
         iv.tintColor = .label
         iv.layer.cornerRadius = 5
         return iv
@@ -64,17 +72,29 @@ final class CharacterTableViewCell: UITableViewCell {
 
     
     private func setupConts() {
-        contentView.addSubview(stackview)
+        contentView.backgroundColor = .green
+        contentView.addSubview(myView)
+        myView.addSubview(stackview)
         stackview.addArrangedSubview(femaleimageView)
         stackview.addArrangedSubview(genderlessimageView)
         stackview.addArrangedSubview(maleimageView)
         
         NSLayoutConstraint.activate([
+            
+            myView.leadingAnchor.constraint(equalToSystemSpacingAfter: contentView.leadingAnchor, multiplier: 2),
+            myView.topAnchor.constraint(equalToSystemSpacingBelow: contentView.topAnchor, multiplier: 1),
+            contentView.bottomAnchor.constraint(equalToSystemSpacingBelow: myView.bottomAnchor, multiplier: 1),
+            contentView.trailingAnchor.constraint(equalToSystemSpacingAfter: myView.trailingAnchor, multiplier: 2)
+        ])
+        
+    
+        
+        NSLayoutConstraint.activate([
 
-            stackview.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-        stackview.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            stackview.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 10),
-            stackview.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width )
+            stackview.leadingAnchor.constraint(equalTo: myView.leadingAnchor),
+            stackview.trailingAnchor.constraint(equalTo: myView.trailingAnchor),
+            stackview.topAnchor.constraint(equalTo: myView.topAnchor),
+            stackview.bottomAnchor.constraint(equalTo: myView.bottomAnchor)
         ])
     }
 

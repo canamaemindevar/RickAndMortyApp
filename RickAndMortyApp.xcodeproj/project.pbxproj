@@ -25,8 +25,12 @@
 		A9417F3B29E9B5AB00F2514E /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9417F3A29E9B5AB00F2514E /* DetailViewModel.swift */; };
 		A9417F3D29E9B5D700F2514E /* NetworkHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9417F3C29E9B5D700F2514E /* NetworkHelpers.swift */; };
 		A9417F3F29E9B5F400F2514E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9417F3E29E9B5F400F2514E /* NetworkManager.swift */; };
-		A9417F4129E9B72800F2514E /* SomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9417F4029E9B72800F2514E /* SomeViewController.swift */; };
+		A9417F4129E9B72800F2514E /* WelcomeHelloViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9417F4029E9B72800F2514E /* WelcomeHelloViewController.swift */; };
 		A9417F6829EC0D3A00F2514E /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = A9417F6729EC0D3A00F2514E /* SDWebImage */; };
+		A9A099DE29EE8AE50012B23B /* LocalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A099DD29EE8AE50012B23B /* LocalState.swift */; };
+		A9A099E529EF1FC90012B23B /* GifPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A099E429EF1FC90012B23B /* GifPlayer.swift */; };
+		A9A099EB29EF23BC0012B23B /* hello-3141_512.gif in Resources */ = {isa = PBXBuildFile; fileRef = A9A099EA29EF23BC0012B23B /* hello-3141_512.gif */; };
+		A9A099ED29EF240A0012B23B /* greeting-1279_512.gif in Resources */ = {isa = PBXBuildFile; fileRef = A9A099EC29EF240A0012B23B /* greeting-1279_512.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,7 +54,11 @@
 		A9417F3A29E9B5AB00F2514E /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		A9417F3C29E9B5D700F2514E /* NetworkHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelpers.swift; sourceTree = "<group>"; };
 		A9417F3E29E9B5F400F2514E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		A9417F4029E9B72800F2514E /* SomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeViewController.swift; sourceTree = "<group>"; };
+		A9417F4029E9B72800F2514E /* WelcomeHelloViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeHelloViewController.swift; sourceTree = "<group>"; };
+		A9A099DD29EE8AE50012B23B /* LocalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalState.swift; sourceTree = "<group>"; };
+		A9A099E429EF1FC90012B23B /* GifPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifPlayer.swift; sourceTree = "<group>"; };
+		A9A099EA29EF23BC0012B23B /* hello-3141_512.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "hello-3141_512.gif"; path = "../../../Downloads/hello-3141_512.gif"; sourceTree = "<group>"; };
+		A9A099EC29EF240A0012B23B /* greeting-1279_512.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "greeting-1279_512.gif"; path = "../../../Downloads/greeting-1279_512.gif"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +77,8 @@
 			isa = PBXGroup;
 			children = (
 				A9417F0B29E9B1B600F2514E /* RickAndMortyApp */,
+				A9A099EA29EF23BC0012B23B /* hello-3141_512.gif */,
+				A9A099EC29EF240A0012B23B /* greeting-1279_512.gif */,
 				A9417F0A29E9B1B600F2514E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,7 +98,7 @@
 				A9417F2029E9B23C00F2514E /* Core */,
 				A9417F2129E9B24100F2514E /* Network */,
 				A9417F2229E9B24E00F2514E /* Feature */,
-				A9417F4029E9B72800F2514E /* SomeViewController.swift */,
+				A9417F4029E9B72800F2514E /* WelcomeHelloViewController.swift */,
 			);
 			path = RickAndMortyApp;
 			sourceTree = "<group>";
@@ -102,6 +112,7 @@
 				A9417F1529E9B1B800F2514E /* Assets.xcassets */,
 				A9417F1729E9B1B800F2514E /* LaunchScreen.storyboard */,
 				A9417F1A29E9B1B800F2514E /* Info.plist */,
+				A9A099DD29EE8AE50012B23B /* LocalState.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -168,6 +179,7 @@
 			children = (
 				A9417F3029E9B4F700F2514E /* MyExtensions.swift */,
 				A9417F3229E9B52E00F2514E /* Constans.swift */,
+				A9A099E429EF1FC90012B23B /* GifPlayer.swift */,
 			);
 			name = "Extensions + Helpers";
 			sourceTree = "<group>";
@@ -236,8 +248,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9A099ED29EF240A0012B23B /* greeting-1279_512.gif in Resources */,
 				A9417F1929E9B1B800F2514E /* LaunchScreen.storyboard in Resources */,
 				A9417F1629E9B1B800F2514E /* Assets.xcassets in Resources */,
+				A9A099EB29EF23BC0012B23B /* hello-3141_512.gif in Resources */,
 				A9417F1429E9B1B600F2514E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,14 +268,16 @@
 				A9417F3929E9B58D00F2514E /* FeedViewModel.swift in Sources */,
 				A9417F1129E9B1B600F2514E /* FeedView.swift in Sources */,
 				A9417F3329E9B52E00F2514E /* Constans.swift in Sources */,
+				A9A099E529EF1FC90012B23B /* GifPlayer.swift in Sources */,
 				A9417F2C29E9B49C00F2514E /* CharacterTableViewCell.swift in Sources */,
-				A9417F4129E9B72800F2514E /* SomeViewController.swift in Sources */,
+				A9417F4129E9B72800F2514E /* WelcomeHelloViewController.swift in Sources */,
 				A9417F3129E9B4F700F2514E /* MyExtensions.swift in Sources */,
 				A9417F2729E9B44000F2514E /* DetailView.swift in Sources */,
 				A9417F3D29E9B5D700F2514E /* NetworkHelpers.swift in Sources */,
 				A9417F0D29E9B1B600F2514E /* AppDelegate.swift in Sources */,
 				A9417F3B29E9B5AB00F2514E /* DetailViewModel.swift in Sources */,
 				A9417F3529E9B55500F2514E /* Character.swift in Sources */,
+				A9A099DE29EE8AE50012B23B /* LocalState.swift in Sources */,
 				A9417F3F29E9B5F400F2514E /* NetworkManager.swift in Sources */,
 				A9417F0F29E9B1B600F2514E /* SceneDelegate.swift in Sources */,
 				A9417F2E29E9B4D800F2514E /* LocationCollectionView.swift in Sources */,
