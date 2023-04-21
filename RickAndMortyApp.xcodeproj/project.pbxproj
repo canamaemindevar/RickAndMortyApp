@@ -14,7 +14,6 @@
 		A9417F1629E9B1B800F2514E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9417F1529E9B1B800F2514E /* Assets.xcassets */; };
 		A9417F1929E9B1B800F2514E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9417F1729E9B1B800F2514E /* LaunchScreen.storyboard */; };
 		A9417F2729E9B44000F2514E /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9417F2629E9B44000F2514E /* DetailView.swift */; };
-		A9417F2A29E9B47800F2514E /* CellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9417F2929E9B47800F2514E /* CellHeader.swift */; };
 		A9417F2C29E9B49C00F2514E /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9417F2B29E9B49C00F2514E /* CharacterTableViewCell.swift */; };
 		A9417F2E29E9B4D800F2514E /* LocationCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9417F2D29E9B4D800F2514E /* LocationCollectionView.swift */; };
 		A9417F3129E9B4F700F2514E /* MyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9417F3029E9B4F700F2514E /* MyExtensions.swift */; };
@@ -43,7 +42,6 @@
 		A9417F1829E9B1B800F2514E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A9417F1A29E9B1B800F2514E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9417F2629E9B44000F2514E /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		A9417F2929E9B47800F2514E /* CellHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellHeader.swift; sourceTree = "<group>"; };
 		A9417F2B29E9B49C00F2514E /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
 		A9417F2D29E9B4D800F2514E /* LocationCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCollectionView.swift; sourceTree = "<group>"; };
 		A9417F3029E9B4F700F2514E /* MyExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyExtensions.swift; sourceTree = "<group>"; };
@@ -98,7 +96,6 @@
 				A9417F2029E9B23C00F2514E /* Core */,
 				A9417F2129E9B24100F2514E /* Network */,
 				A9417F2229E9B24E00F2514E /* Feature */,
-				A9417F4029E9B72800F2514E /* WelcomeHelloViewController.swift */,
 			);
 			path = RickAndMortyApp;
 			sourceTree = "<group>";
@@ -142,6 +139,7 @@
 				A9417F2829E9B46D00F2514E /* SubView */,
 				A9417F1029E9B1B600F2514E /* FeedView.swift */,
 				A9417F2629E9B44000F2514E /* DetailView.swift */,
+				A9417F4029E9B72800F2514E /* WelcomeHelloViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -167,7 +165,6 @@
 		A9417F2829E9B46D00F2514E /* SubView */ = {
 			isa = PBXGroup;
 			children = (
-				A9417F2929E9B47800F2514E /* CellHeader.swift */,
 				A9417F2B29E9B49C00F2514E /* CharacterTableViewCell.swift */,
 				A9417F2D29E9B4D800F2514E /* LocationCollectionView.swift */,
 			);
@@ -263,7 +260,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9417F2A29E9B47800F2514E /* CellHeader.swift in Sources */,
 				A9417F3729E9B56900F2514E /* Location.swift in Sources */,
 				A9417F3929E9B58D00F2514E /* FeedViewModel.swift in Sources */,
 				A9417F1129E9B1B600F2514E /* FeedView.swift in Sources */,

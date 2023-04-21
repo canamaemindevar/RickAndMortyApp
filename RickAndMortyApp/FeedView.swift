@@ -7,7 +7,9 @@
 
 import UIKit
 
-
+protocol CellHeaderInterface: AnyObject {
+    func updateTopCollectionView(with: [LocationResult])
+}
 
 
 protocol FeedViewControllerInterface: AnyObject {
@@ -20,6 +22,22 @@ final class FeedViewController: UIViewController  {
     
     //MARK: - Components
     private lazy var viewModel = FeedViewModel()
+    
+    
+    let segmentControlCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let size = UIScreen.main.bounds.width
+        layout.itemSize = .init(width: size/3, height: 80)
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collection.translatesAutoresizingMaskIntoConstraints = false
+        collection.layer.cornerRadius = 5
+        collection.backgroundColor = .cyan
+        collection.register(LocationCollectionViewCell.self, forCellWithReuseIdentifier: LocationCollectionViewCell.identifier)
+        
+        return collection
+    }()
+    
     
      let tableView: UITableView = {
         let tableView = UITableView(frame: .zero,style: .grouped)
@@ -41,10 +59,18 @@ final class FeedViewController: UIViewController  {
     
     private func setupConts() {
         
+        
         NSLayoutConstraint.activate([
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: tableView.trailingAnchor),
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            segmentControlCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            view.trailingAnchor.constraint(equalTo: segmentControlCollectionView.trailingAnchor),
+            segmentControlCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            segmentControlCollectionView.heightAnchor.constraint(equalToConstant: 100)
+        ])
+        
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: segmentControlCollectionView.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: segmentControlCollectionView.trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: segmentControlCollectionView.bottomAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
@@ -121,8 +147,14 @@ extension FeedViewController: FeedViewControllerInterface {
         }
     }
     
+    func hello() {
+        print("hellooo")
+    }
+    
     func prepare() {
         
+        segmentControlCollectionView.delegate = self
+        segmentControlCollectionView.dataSource = self
        
         
         tableView.delegate = self
@@ -130,6 +162,7 @@ extension FeedViewController: FeedViewControllerInterface {
         
         view.backgroundColor = .systemBackground
         view.addSubview(tableView)
+        view.addSubview(segmentControlCollectionView)
         
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeft))
         swipeDown.direction = .left
@@ -139,12 +172,14 @@ extension FeedViewController: FeedViewControllerInterface {
         swipeUp.direction = .right
         view.addGestureRecognizer(swipeUp)
         
-        let tableViewHeader = CellHeader(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100))
-        self.tableView.tableHeaderView = tableViewHeader
+      //  let tableViewHeader = CellHeader(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100))
+        // self.tableView.tableHeaderView = tableViewHeader
         
         setupConts()
     }
 }
+
+
 
 
 //MARK: - Change Location
@@ -168,3 +203,57 @@ extension FeedViewController {
     }
     
 }
+
+
+//MARK: COllectionView
+
+extension FeedViewController: CellHeaderInterface {
+    func updateTopCollectionView(with: [LocationResult]) {
+        viewModel.locationResponseForCollectionView = with
+        DispatchQueue.main.async {
+            self.segmentControlCollectionView.reloadData()
+        }
+    }
+    
+    
+}
+
+extension FeedViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let arr = viewModel.locationResponseForCollectionView
+        guard let query = arr[indexPath.item].id else {
+            return
+        }
+
+        viewModel.currentIndex = query
+        print(viewModel.currentIndex)
+
+        viewModel.fetchLocationWithQuery(with: String(query))
+
+    }
+}
+
+extension FeedViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    
+        viewModel.locationResponseForCollectionView.count
+        
+      
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LocationCollectionViewCell.identifier, for: indexPath) as? LocationCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+
+
+        cell.configure(viewModel.locationResponseForCollectionView[indexPath.item].name ?? "nil")
+
+        
+        return cell
+    }
+}
+

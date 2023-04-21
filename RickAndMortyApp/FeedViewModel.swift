@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
 protocol FeedViewModelInterface {
     var view: FeedViewController? { get set }
-    var headercell: CellHeader? {get set}
+    
     func parseCharacter(with id: String , completion: @escaping(ResultCharacter) -> Void )
     func fetchLocationWithQuery(with id: String)
     var currentIndex: Int {get set}
@@ -19,7 +20,7 @@ protocol FeedViewModelInterface {
 final class FeedViewModel {
     
     weak var view: FeedViewController?
-    weak var headercell: CellHeader?
+    
     
     var locationResponseForCollectionView = [LocationResult]()
     var tableViewCharacterUrlArray = [String]()
@@ -47,7 +48,8 @@ final class FeedViewModel {
                             return
                         }
                         
-                        self?.headercell?.updateTopCollectionView(with: data)
+                        self?.view?.updateTopCollectionView(with: data)
+                      
                     })
                 }
             case .failure(let failure):
@@ -77,7 +79,11 @@ extension FeedViewModel: FeedViewModelInterface {
                         return
                     }
                     self.view?.updateTableView(chracters: data)
+                 //   self.view?.hello()
                     //   print(data)
+                 //   self.updateTableView(chracters: data)
+        
+                    
                 }
             case .failure(let failure):
                 
@@ -99,6 +105,13 @@ extension FeedViewModel: FeedViewModelInterface {
         }
     }
     
+//    func updateTableView(chracters: [String]) {
+//        tableViewCharacterUrlArray = chracters
+//
+//        DispatchQueue.main.async {
+//            self.view?.tableView.reloadData()
+//        }
+//    }
     
 }
 
