@@ -32,7 +32,7 @@ final class FeedViewController: UIViewController  {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.translatesAutoresizingMaskIntoConstraints = false
         collection.layer.cornerRadius = 5
-        collection.backgroundColor = .cyan
+        collection.backgroundColor = .systemTeal
         collection.register(LocationCollectionViewCell.self, forCellWithReuseIdentifier: LocationCollectionViewCell.identifier)
         
         return collection
@@ -42,7 +42,7 @@ final class FeedViewController: UIViewController  {
      let tableView: UITableView = {
         let tableView = UITableView(frame: .zero,style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .systemGray6
+        tableView.backgroundColor = .clear
         tableView.separatorColor = .systemCyan
         tableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: CharacterTableViewCell.identifier)
         tableView.layer.cornerRadius = 40
@@ -159,7 +159,7 @@ extension FeedViewController: FeedViewControllerInterface {
         tableView.delegate = self
         tableView.dataSource = self
         
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .systemTeal
         view.addSubview(tableView)
         view.addSubview(segmentControlCollectionView)
         

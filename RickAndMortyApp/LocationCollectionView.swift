@@ -16,7 +16,7 @@ final class LocationCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.resizable()
         label.numberOfLines = 0
-        label.font(.preferredFont(forTextStyle: .body).withSize(22))
+        label.font(.boldSystemFont(ofSize: 22))
         label.align(.center)
         label.backgroundColor = .clear
         label.textColor(.label)
@@ -25,7 +25,7 @@ final class LocationCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .magenta
+        backgroundColor = .systemPurple
         setConts()
     }
     

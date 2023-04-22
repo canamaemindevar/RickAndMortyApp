@@ -30,6 +30,18 @@ final class CharacterTableViewCell: UITableViewCell {
         iv.layer.cornerRadius = 5
         return iv
     }()
+    
+    private let nameLabel: UILabel = {
+        let sView = UILabel()
+        sView.translatesAutoresizingMaskIntoConstraints = false
+        sView.layer.cornerRadius = 5
+        sView.textColor(.label)
+        sView.font(.boldSystemFont(ofSize: 20))
+        sView.align(.center)
+        return sView
+    }()
+    
+    
     private let femaleimageView: UIImageView = {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
@@ -74,6 +86,7 @@ final class CharacterTableViewCell: UITableViewCell {
     private func setupConts() {
         contentView.backgroundColor = .green
         contentView.addSubview(myView)
+        contentView.addSubview(nameLabel)
         myView.addSubview(stackview)
         stackview.addArrangedSubview(femaleimageView)
         stackview.addArrangedSubview(genderlessimageView)
@@ -87,13 +100,18 @@ final class CharacterTableViewCell: UITableViewCell {
             contentView.trailingAnchor.constraint(equalToSystemSpacingAfter: myView.trailingAnchor, multiplier: 2)
         ])
         
-    
+        NSLayoutConstraint.activate([
+            nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+            nameLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: contentView.leadingAnchor, multiplier: 1),
+            contentView.trailingAnchor.constraint(equalToSystemSpacingAfter: nameLabel.trailingAnchor, multiplier: 1),
+            nameLabel.heightAnchor.constraint(equalToConstant: 20)
+        ])
         
         NSLayoutConstraint.activate([
 
             stackview.leadingAnchor.constraint(equalTo: myView.leadingAnchor),
             stackview.trailingAnchor.constraint(equalTo: myView.trailingAnchor),
-            stackview.topAnchor.constraint(equalTo: myView.topAnchor),
+            stackview.topAnchor.constraint(equalTo: myView.topAnchor, constant: 20),
             stackview.bottomAnchor.constraint(equalTo: myView.bottomAnchor)
         ])
     }
@@ -112,6 +130,7 @@ final class CharacterTableViewCell: UITableViewCell {
             guard let self = self  else {
                 return
             }
+            nameLabel.text(data.name ?? "")
             switch data.gender {
             case .some(.female):
                 maleimageView.image = nil
@@ -119,8 +138,11 @@ final class CharacterTableViewCell: UITableViewCell {
                 maleimageView.backgroundColor = .systemPurple
                 genderlessimageView.backgroundColor = .systemPurple
                 contentView.backgroundColor = .systemPurple
+                femaleimageView.backgroundColor = .systemPurple
                 //TODO: sd Web image
                 femaleimageView.sd_setImage(with: URL(string: url) )
+                
+
             case .none:
                 break
             case .some(.male):
@@ -129,17 +151,19 @@ final class CharacterTableViewCell: UITableViewCell {
                 femaleimageView.backgroundColor = .darkGray
                 genderlessimageView.backgroundColor = .darkGray
                 contentView.backgroundColor = .darkGray
+                maleimageView.backgroundColor = .darkGray
                 //TODO: sd Web image
                 maleimageView.sd_setImage(with: URL(string: url) )
+
             case .some(.unknown), .some(.genderless):
                 femaleimageView.image = nil
                 maleimageView.image = nil
                 femaleimageView.backgroundColor = .link
                 maleimageView.backgroundColor = .link
                 contentView.backgroundColor = .link
+                genderlessimageView.backgroundColor = .link
                 //TODO: sd Web image
               genderlessimageView.sd_setImage(with: URL(string: url) )
-          
             }
         }
         

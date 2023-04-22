@@ -80,7 +80,9 @@ extension FeedViewModel: FeedViewModelInterface {
                         return
                     }
                     self.view?.updateTableView(chracters: data)
-
+                    DispatchQueue.main.async {
+                        self.view?.segmentControlCollectionView.scrollRectToVisible(CGRect(x: 0, y: 0, width: Int(UIScreen.main.bounds.width) / Int(3.1) * self.currentIndex, height: 10), animated: true)
+                    }
         
                     
                 }
