@@ -63,26 +63,26 @@ class WelcomeHelloViewController: UIViewController {
 }
 
 
-@available(iOS 13, *)
-extension UIViewController {
-    private struct Preview: UIViewControllerRepresentable {
-        //var is used for injecting the current view controller
-        let viewController: UIViewController
-        
-        func makeUIViewController(context: Context) -> UIViewController {
-            return viewController
-        }
-        func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
-    }
-    
-    func toPreview() -> some View {
-        Preview(viewController: self)
-    }
-}
-
-
-struct SwiftUIView_Previews: PreviewProvider {
-    static var previews: some View {
-        WelcomeHelloViewController().toPreview()
-    }
-}
+//@available(iOS 13, *)
+//extension UIViewController {
+//    private struct Preview: UIViewControllerRepresentable {
+//        //var is used for injecting the current view controller
+//        let viewController: UIViewController
+//        
+//        func makeUIViewController(context: Context) -> UIViewController {
+//            return viewController
+//        }
+//        func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
+//    }
+//    
+//    func toPreview() -> some View {
+//        Preview(viewController: self)
+//    }
+//}
+//
+//
+//struct SwiftUIView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        WelcomeHelloViewController().toPreview()
+//    }
+//}

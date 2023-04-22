@@ -21,3 +21,17 @@ final class DetailViewModel{
     }
 }
 
+//extension DetailViewModel: ChracterParsable {
+//    func parseCharacter(with link: String , completion: @escaping(ResultCharacter) -> Void )  {
+//        NetworkManager.shared.request(type: ResultCharacter.self, url: link, method: .get) { response in
+//            
+//            switch response {
+//            case .success(let success):
+//                completion(success)
+//            case .failure(let failure):
+//                print(failure)
+//            }
+//        }
+//    }
+//}
+

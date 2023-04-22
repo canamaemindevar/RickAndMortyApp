@@ -90,14 +90,16 @@ extension FeedViewController: UITableViewDelegate {
         
         self.viewModel.parseCharacter(with: url) {[weak self] response in
             
+            DispatchQueue.main.async {
                 let vm = DetailViewModel(data: response)
                 let vc = DetailViewController(vm: vm)
                 self?.navigationController?.pushViewController(vc, animated: true)
             
+            }
+                
           
     }
-    
-    
+
     }
 }
 
@@ -147,9 +149,6 @@ extension FeedViewController: FeedViewControllerInterface {
         }
     }
     
-    func hello() {
-        print("hellooo")
-    }
     
     func prepare() {
         
@@ -171,9 +170,6 @@ extension FeedViewController: FeedViewControllerInterface {
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(swiperight))
         swipeUp.direction = .right
         view.addGestureRecognizer(swipeUp)
-        
-      //  let tableViewHeader = CellHeader(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100))
-        // self.tableView.tableHeaderView = tableViewHeader
         
         setupConts()
     }

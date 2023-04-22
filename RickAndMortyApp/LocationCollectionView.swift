@@ -42,7 +42,6 @@ final class LocationCollectionViewCell: UICollectionViewCell {
             label.topAnchor.constraint(equalTo: topAnchor),
             label.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
-     //   self.label.frame = bounds
         
         self.layer.cornerRadius = 20
         

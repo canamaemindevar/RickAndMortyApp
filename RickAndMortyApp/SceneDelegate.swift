@@ -29,7 +29,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = feedView
         welcomeHelloView.delegate = self
        // window?.rootViewController = DetailViewController()
-       setRootViewController(welcomeHelloView)
+        
+        setRootViewController(welcomeHelloView, isNavActive: false)
         
         window?.makeKeyAndVisible()
     }
@@ -69,7 +70,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 extension SceneDelegate: WelcomeHelloViewControllerInterface {
     func rootToFeedView() {
         LocalState.hasOnboarded = true
-        setRootViewController(feedView)
+        setRootViewController(feedView, isNavActive: true)
     }
     
     
@@ -77,13 +78,18 @@ extension SceneDelegate: WelcomeHelloViewControllerInterface {
 
 
 extension SceneDelegate {
-    func setRootViewController(_ vc: UIViewController, animated: Bool = true) {
+    func setRootViewController(_ vc: UIViewController, animated: Bool = true, isNavActive: Bool) {
         guard animated, let window = self.window else {
             self.window?.rootViewController = vc
             self.window?.makeKeyAndVisible()
             return
         }
-        window.rootViewController = vc
+        if isNavActive == true {
+            window.rootViewController = UINavigationController(rootViewController: vc)
+        }else {
+            window.rootViewController = vc
+        }
+        
         window.makeKeyAndVisible()
         UIView.transition(with: window,
                           duration: 0.7,

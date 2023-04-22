@@ -29,6 +29,7 @@ final class FeedViewModel {
     init() {
         fetchLocationData()
         fetchLocationWithQuery(with: "1")
+        
     }
     
     deinit {
@@ -79,9 +80,7 @@ extension FeedViewModel: FeedViewModelInterface {
                         return
                     }
                     self.view?.updateTableView(chracters: data)
-                 //   self.view?.hello()
-                    //   print(data)
-                 //   self.updateTableView(chracters: data)
+
         
                     
                 }
@@ -104,14 +103,8 @@ extension FeedViewModel: FeedViewModelInterface {
             }
         }
     }
+
     
-//    func updateTableView(chracters: [String]) {
-//        tableViewCharacterUrlArray = chracters
-//
-//        DispatchQueue.main.async {
-//            self.view?.tableView.reloadData()
-//        }
-//    }
     
 }
 
