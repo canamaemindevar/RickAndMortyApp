@@ -38,7 +38,7 @@ final class FeedViewModel {
     
     
     func fetchLocationData() {
-        NetworkManager.shared.request(type: LocationResponse.self, url: "https://rickandmortyapi.com/api/location", method: .get) { [weak self] response in
+        NetworkManager.shared.request(type: LocationResponse.self, url: Endpoints.location.withBaseUrl(), method: .get) { [weak self] response in
             switch response {
             case .success(let success):
                 
@@ -71,8 +71,8 @@ extension FeedViewModel: FeedViewModelInterface {
     }
     
     func fetchLocationWithQuery(with id: String) {
-        NetworkManager.shared.request(type: LocationResult.self, url: "https://rickandmortyapi.com/api/location/\(id)", method: .get) { response in
-            
+        NetworkManager.shared.request(type: LocationResult.self, url: Endpoints.location.withQueryBaseUrl(id: id), method: .get) { response in
+
             switch response {
             case .success(let success):
                 if success.id != nil {

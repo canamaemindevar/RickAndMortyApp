@@ -10,6 +10,7 @@ import Foundation
 enum Endpoints: String {
     
     case character = "/character"
+    case location = "/location"
     
 }
 
@@ -19,6 +20,9 @@ extension Endpoints {
     
     func withBaseUrl() -> String{
         return "https://rickandmortyapi.com/api\(self.rawValue)"
+    }
+    func withQueryBaseUrl(id: String) -> String {
+        return "https://rickandmortyapi.com/api\(self.rawValue)/\(id)"
     }
 }
 
