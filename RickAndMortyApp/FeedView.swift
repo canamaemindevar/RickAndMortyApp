@@ -23,6 +23,14 @@ final class FeedViewController: UIViewController  {
     //MARK: - Components
     private lazy var viewModel = FeedViewModel()
     
+    let progressView: UIActivityIndicatorView = {
+        let pV = UIActivityIndicatorView(frame: CGRect(x: UIScreen.main.bounds.size.width / 2, y: 50, width: 50, height: 50))
+        pV.style = .large
+        pV.hidesWhenStopped = true
+        pV.color = .magenta
+        return pV
+    }()
+    
     
     let segmentControlCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -87,12 +95,13 @@ final class FeedViewController: UIViewController  {
 extension FeedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let url = self.viewModel.tableViewCharacterUrlArray[indexPath.row]
-        
+        self.progressView.startAnimating()
         self.viewModel.parseCharacter(with: url) {[weak self] response in
             
             DispatchQueue.main.async {
                 let vm = DetailViewModel(data: response)
                 let vc = DetailViewController(vm: vm)
+                self?.progressView.stopAnimating()
                 self?.navigationController?.pushViewController(vc, animated: true)
             
             }
@@ -146,6 +155,7 @@ extension FeedViewController: FeedViewControllerInterface {
         
         DispatchQueue.main.async {
             self.tableView.reloadData()
+            self.progressView.stopAnimating()
         }
     }
     
@@ -162,7 +172,8 @@ extension FeedViewController: FeedViewControllerInterface {
         view.backgroundColor = .systemTeal
         view.addSubview(tableView)
         view.addSubview(segmentControlCollectionView)
-        
+        view.addSubview(progressView)
+        progressView.startAnimating()
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeft))
         swipeDown.direction = .left
         view.addGestureRecognizer(swipeDown)
@@ -207,8 +218,10 @@ extension FeedViewController: CellHeaderInterface {
     func updateTopCollectionView(with: [LocationResult]) {
         viewModel.locationResponseForCollectionView.append(contentsOf: with)
         DispatchQueue.main.async {
+            self.progressView.stopAnimating()
             self.segmentControlCollectionView.reloadData()
             print(self.viewModel.locationResponseForCollectionView.count)
+            
         }
     }
     
@@ -217,6 +230,7 @@ extension FeedViewController: CellHeaderInterface {
 
 extension FeedViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.progressView.startAnimating()
         let arr = viewModel.locationResponseForCollectionView
         guard let query = arr[indexPath.item].id else {
             return
@@ -255,6 +269,7 @@ extension FeedViewController: UICollectionViewDataSource {
     
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.isLastRow(at: collectionView) {
+            self.progressView.startAnimating()
             viewModel.fetchLocationPageWithQuery(id: viewModel.currentLocationPageIndex + 1)
         }
     }
