@@ -13,7 +13,8 @@ protocol FeedViewModelInterface {
     
     func parseCharacter(with id: String , completion: @escaping(ResultCharacter) -> Void )
     func fetchLocationWithQuery(with id: String)
-    var currentIndex: Int {get set}
+    var currentLocationIndex: Int {get set}
+    var currentLocationPageIndex: Int {get set}
     func viewDidLoad()
 }
 
@@ -25,9 +26,10 @@ final class FeedViewModel {
     var locationResponseForCollectionView = [LocationResult]()
     var tableViewCharacterUrlArray = [String]()
     var tableViewCharacterArray = [ResultCharacter]()
-      var currentIndex = 1
+    var currentLocationIndex = 1
+    var currentLocationPageIndex = 0
     init() {
-        fetchLocationData()
+        fetchLocationPageWithQuery(id: 1)
         fetchLocationWithQuery(with: "1")
         
     }
@@ -37,8 +39,8 @@ final class FeedViewModel {
     }
     
     
-    func fetchLocationData() {
-        NetworkManager.shared.request(type: LocationResponse.self, url: Endpoints.location.withBaseUrl(), method: .get) { [weak self] response in
+    func fetchLocationPageWithQuery(id: Int) {
+        NetworkManager.shared.request(type: LocationResponse.self, url: Endpoints.location.pageQuery(pageId: id.description), method: .get) { [weak self] response in
             switch response {
             case .success(let success):
                 
@@ -48,7 +50,7 @@ final class FeedViewModel {
                         guard let data = response.results else {
                             return
                         }
-                        
+                        self?.currentLocationPageIndex = id
                         self?.view?.updateTopCollectionView(with: data)
                       
                     })
@@ -81,7 +83,7 @@ extension FeedViewModel: FeedViewModelInterface {
                     }
                     self.view?.updateTableView(chracters: data)
                     DispatchQueue.main.async {
-                        self.view?.segmentControlCollectionView.scrollRectToVisible(CGRect(x: 0, y: 0, width: Int(UIScreen.main.bounds.width) / Int(3.1) * self.currentIndex, height: 10), animated: true)
+                        self.view?.segmentControlCollectionView.scrollRectToVisible(CGRect(x: 0, y: 0, width: Int(UIScreen.main.bounds.width) / Int(3.1) * self.currentLocationIndex, height: 10), animated: true)
                     }
         
                     

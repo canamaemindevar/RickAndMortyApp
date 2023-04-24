@@ -18,8 +18,8 @@ extension Endpoints {
     
    
     
-    func withBaseUrl() -> String{
-        return "https://rickandmortyapi.com/api\(self.rawValue)"
+    func pageQuery(pageId: String) -> String{
+        return "https://rickandmortyapi.com/api\(self.rawValue)?page=\(pageId)"
     }
     func withQueryBaseUrl(id: String) -> String {
         return "https://rickandmortyapi.com/api\(self.rawValue)/\(id)"

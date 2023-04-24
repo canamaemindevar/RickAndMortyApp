@@ -10,7 +10,7 @@ import Foundation
 class NetworkManager {
     
     static let shared = NetworkManager()
-    
+    private init() {}
     
     func request<T: Codable>(type: T.Type,url: String, method: HttpMethods,parametres: [String: Any]? = nil,completion: @escaping((Result<T,ErrosTypes>)->())) {
         

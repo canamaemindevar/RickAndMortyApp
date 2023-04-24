@@ -185,16 +185,16 @@ extension FeedViewController {
     
     @objc func swipeLeft() {
 
-        if viewModel.currentIndex > 0 && viewModel.currentIndex <= 19 {
-            viewModel.currentIndex += 1
-            viewModel.fetchLocationWithQuery(with: String(viewModel.currentIndex))
+        if viewModel.currentLocationIndex > 0 && viewModel.currentLocationIndex <= 19 {
+            viewModel.currentLocationIndex += 1
+            viewModel.fetchLocationWithQuery(with: String(viewModel.currentLocationIndex))
         }
     }
     @objc func swiperight() {
 
-        if viewModel.currentIndex > 1 && viewModel.currentIndex <= 20 {
-            viewModel.currentIndex -= 1
-            viewModel.fetchLocationWithQuery(with: String(viewModel.currentIndex))
+        if viewModel.currentLocationIndex > 1 && viewModel.currentLocationIndex <= 20 {
+            viewModel.currentLocationIndex -= 1
+            viewModel.fetchLocationWithQuery(with: String(viewModel.currentLocationIndex))
         }
     }
     
@@ -205,9 +205,10 @@ extension FeedViewController {
 
 extension FeedViewController: CellHeaderInterface {
     func updateTopCollectionView(with: [LocationResult]) {
-        viewModel.locationResponseForCollectionView = with
+        viewModel.locationResponseForCollectionView.append(contentsOf: with)
         DispatchQueue.main.async {
             self.segmentControlCollectionView.reloadData()
+            print(self.viewModel.locationResponseForCollectionView.count)
         }
     }
     
@@ -221,8 +222,8 @@ extension FeedViewController: UICollectionViewDelegate {
             return
         }
 
-        viewModel.currentIndex = query
-        print(viewModel.currentIndex)
+        viewModel.currentLocationIndex = query
+        print(viewModel.currentLocationIndex)
 
         viewModel.fetchLocationWithQuery(with: String(query))
 
@@ -250,6 +251,12 @@ extension FeedViewController: UICollectionViewDataSource {
 
         
         return cell
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.isLastRow(at: collectionView) {
+            viewModel.fetchLocationPageWithQuery(id: viewModel.currentLocationPageIndex + 1)
+        }
     }
 }
 
