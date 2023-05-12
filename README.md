@@ -11,4 +11,4 @@
 <br>🔭 Singleton.
 <br>🔭 LazyLoad.
 <br>🔭 Custom Extensions.
-# Note:  All task are done (including task 8):
+
