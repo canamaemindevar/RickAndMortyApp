@@ -49,7 +49,7 @@ class WelcomeHelloViewController: UIViewController {
         if LocalState.hasOnboarded == false {
             
             view.backgroundColor = .systemBackground
-            imageView.image = UIImage.gifImageWithName("greeting-1279_512")
+            imageView.image = UIImage.gifImageWithName("greeting-1279_512.gif 19-54-23-520")
         } else {
             
             view.backgroundColor = .systemBackground
